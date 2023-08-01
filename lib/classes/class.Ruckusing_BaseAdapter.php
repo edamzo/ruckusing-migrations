@@ -4,6 +4,7 @@ class Ruckusing_BaseAdapter {
 	private $dsn;
 	private $db;
 	private $conn;
+	private $logger = null;
 	
 	function __construct($dsn) {
 		$this->set_dsn($dsn);

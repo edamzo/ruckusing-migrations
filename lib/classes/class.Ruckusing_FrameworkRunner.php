@@ -15,6 +15,7 @@ class Ruckusing_FrameworkRunner {
 	private $db_config = array(); //all available DB configs (e.g. test,development, production)
 	private $task_mgr = null;
 	private $adapter = null;
+	private $logger = null;
 	private $cur_task_name = "";
 	private $task_options = "";
 	private $ENV = "development"; //default (can also be one 'test', 'production')

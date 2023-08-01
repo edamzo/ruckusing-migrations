@@ -10,6 +10,7 @@ class Ruckusing_Logger {
    * @var bool|null
    */
   private $knownFile = null;
+  private $fp = null;
 
   public function __construct($file) {
     $this->file = $file;

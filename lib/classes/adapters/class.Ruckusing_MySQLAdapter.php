@@ -61,6 +61,9 @@ class Ruckusing_MySQLAdapter extends Ruckusing_BaseAdapter implements Ruckusing_
 	private $tables_loaded = false;
 	private $version = '1.0';
 	private $in_trx = false;
+	private $db_info = null;
+	private $conn = null;
+	private $logger = null;
 
 	function __construct($dsn, $logger) {
 		parent::__construct($dsn);
@@ -296,7 +299,7 @@ class Ruckusing_MySQLAdapter extends Ruckusing_BaseAdapter implements Ruckusing_
 	}
 
 	public function query($query) {
-		$this->logger->log($query);
+		$this->logger?->log($query);
 		$query_type = $this->determine_query_type($query);
 		$data = array();
 		if($query_type == SQL_SELECT || $query_type == SQL_SHOW) {		  
@@ -325,7 +328,7 @@ class Ruckusing_MySQLAdapter extends Ruckusing_BaseAdapter implements Ruckusing_
 	}
 	
 	public function select_one($query) {
-		$this->logger->log($query);
+		$this->logger?->log($query);
 		$query_type = $this->determine_query_type($query);
 		if($query_type == SQL_SELECT || $query_type == SQL_SHOW) {
 		  $res = mysqli_query($this->conn, $query);
